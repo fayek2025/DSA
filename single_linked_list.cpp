@@ -75,6 +75,28 @@ void add_node_middle(struct node** head , int data , int pos)
      
 }
 
+void add_at_position(struct node** head , int data , int pos)
+{
+    node* current = *head;
+    node* newnode = (node*)malloc(sizeof(node));
+
+    if(pos == 0)
+    {
+        push_front(head , data);
+        return;
+    }
+    for (int i = 1; i < pos; i++)
+    {
+        current = current -> next;
+    }
+    newnode->data = data;
+    newnode -> next = current->next;
+    current->next = newnode;
+    return;
+    
+}
+
+
 int main()
 {
     struct node* head = NULL;
@@ -113,9 +135,14 @@ int main()
     default:
         break;
     }
+    int pos;
+    cin >> pos;
 
-    
-    add_node_middle(&head , 5 , 5);
+    cout << "Before adding data at a position" << endl;
+
+    //add_node_middle(&head , 5 , 5);
     printList(head);
-
+    add_at_position(&head , 6 , pos);
+    cout << "After adding data at a position" << endl;
+    printList(head);
 }
