@@ -23,6 +23,7 @@ int height(Node *N)
 	if (N == NULL) 
 		return 0; 
 	return N->height; 
+	
 } 
 
 // A utility function to get maximum
@@ -290,51 +291,21 @@ void preOrder(Node *root)
 // Driver Code
 int main() 
 { 
-Node *root = NULL; 
+   Node *root = NULL; 
 
-	/* Constructing tree given in
-	the above figure */
-	root = insert(root, 9); 
-	root = insert(root, 5); 
-	root = insert(root, 10); 
-	root = insert(root, 0); 
-	root = insert(root, 6); 
-	root = insert(root, 11); 
-	root = insert(root, -1); 
-	root = insert(root, 1); 
-	root = insert(root, 2); 
+	
+    root = insert(root, 10);  
+    root = insert(root, 20);  
+    root = insert(root, 30);  
+    root = insert(root, 40);  
+    root = insert(root, 50);  
+    root = insert(root, 25);
 
-	/* The constructed AVL Tree would be 
-			9 
-		/ \ 
-		1 10 
-		/ \ \ 
-	0 5 11 
-	/ / \ 
-	-1 2 6 
-	*/
+	deleteNode(root , 20);
 
 	cout << "Preorder traversal of the "
 			"constructed AVL tree is \n"; 
 	preOrder(root); 
-
-	root = deleteNode(root, 10); 
-
-	/* The AVL Tree after deletion of 10 
-			1 
-		/ \ 
-		0 9 
-		/ / \ 
-	-1 5	 11 
-		/ \ 
-		2 6 
-	*/
-
-	cout << "\nPreorder traversal after"
-		<< " deletion of 10 \n"; 
-	preOrder(root); 
-
-	return 0; 
 } 
 
 // This code is contributed by rathbhupendra

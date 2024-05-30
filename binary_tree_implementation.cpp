@@ -130,6 +130,63 @@ node* search(node* root , int key)
     {
        return search(root -> left , key);
     }
+
+    return root;
+}
+
+node* deletion_at_predecessor(node* root , int key)
+{
+    if(root == NULL)
+    {
+        return root;    
+    }
+
+
+    if(key > root ->key)
+    {
+        root -> right = deletion(root->right , key);
+        return root;
+    }
+    if(key < root->key)
+    {
+        root -> left = deletion(root->left ,key);
+        return root;
+    }
+
+    if(root->left == NULL)
+    {
+        node* temp = root->right;
+        delete root;
+        return temp;
+    }
+    else if(root -> right ==NULL)
+    {
+        node* temp = root->left;
+        delete root;
+        return temp;
+    }
+
+    node* predecessor = root;
+    node* succ = root->left;
+    while (succ -> right != NULL)
+
+    {
+        predecessor = succ;
+        succ = succ ->right;
+    }
+
+    root -> key = succ-> key;
+    if(predecessor->right == succ)
+    {
+        predecessor->right = succ->left;
+    }
+    else
+    {
+        predecessor->left = succ->left;
+    }
+
+    delete succ;
+    return root;
 }
 
 int main()
@@ -146,8 +203,8 @@ int main()
        root =  insertNode(root , a);
     }
 
-    deletion(root , 100);
-    cout << search(root , 20)->key << endl;
+    deletion_at_predecessor(root , 90);
+    //cout << search(root , 20)->key << endl;
     inorderTraverse(root);
     
 }

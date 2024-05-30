@@ -41,7 +41,6 @@ void heapify(int arr[], int N, int i)
 void heapSort(int arr[], int N)
 {
 
-    // Build heap (rearrange array)
     for (int i = N / 2 - 1; i >= 0; i--)
         heapify(arr, N, i);
 
