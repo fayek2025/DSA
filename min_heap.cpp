@@ -8,7 +8,7 @@ void heapify(int arr[] , int n , int i)
 
     if(arr[parent] > 0)
     {
-        if(arr[i] < arr[parent])
+        if(arr[i] > arr[parent])
         {
             swap(arr[i] , arr[parent]);
 
